@@ -3,6 +3,7 @@ import 'package:brew_crew/Models/user.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   MyUser? _userFromFirebaseUser(User user) {
     return user != null ? MyUser(uid: user.uid) : null;
   }
@@ -26,8 +27,29 @@ class AuthService {
     }
   }
   //sign in email
-
+  Future signInWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      User? user = result.user;
+      return _userFromFirebaseUser(user!);
+    } catch (error) {
+      print(error.toString());
+      return null;
+    }
+  }
   //register email and password
+  Future registerWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      User? user = result.user;
+      return _userFromFirebaseUser(user!);
+    } catch (error) {
+      print(error.toString());
+      return null;
+    }
+  }
 
   //sign out
   Future signOut() async {
