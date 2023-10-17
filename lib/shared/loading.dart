@@ -8,15 +8,15 @@ class Loading extends StatefulWidget {
   State<Loading> createState() => _LoadingState();
 }
 
-class _LoadingState extends State<Loading> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.brown[100],
-      child: const SpinKitDancingSquare(
-        color: Colors.brown,
-        size: 50.0,
-      ),
-    );
-  }
-}
+// class _LoadingState extends State<Loading> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       color: Colors.brown[100],
+//       child: const SpinKitDancingSquare(
+//         color: Colors.brown,
+//         size: 50.0,
+//       ),
+//     );
+//   }
+// }
